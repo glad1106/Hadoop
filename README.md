@@ -104,7 +104,7 @@ nano hdfs-site.xml
 </configuration>
 
 hadoop classpath
-/home/srividya/Desktop/course/softwares/hadoop-3.3.4/etc/hadoop:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/common/lib/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/common/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/hdfs:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/hdfs/lib/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/hdfs/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/mapreduce/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/yarn:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/yarn/lib/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/yarn/*
+/home/gladys/Desktop/course/softwares/hadoop-3.3.4/etc/hadoop:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/common/lib/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/common/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/hdfs:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/hdfs/lib/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/hdfs/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/mapreduce/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/yarn:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/yarn/lib/*:/home/gladys/Desktop/course/softwares/hadoop-3.3.4/share/hadoop/yarn/*
 
 nano yarn-site.xml
 <configuration>
