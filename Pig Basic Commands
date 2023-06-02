@@ -1,0 +1,47 @@
+# Pig
+Pig Basic Commands
+{ coping files to read }
+hadoop fs -copyFromLocal emp.csv pig/emp.csv
+
+{ loading data }
+DfA = load'/user/data/empdata_pig.csv' using PigStorage(',') as (id:int, name:chararray, sal:int, dpno:int);
+describe DfA;
+dump DfA;
+
+{ aggregate }
+DfB = filter DfA by sal>=100;
+dump DfB;
+DfC = filter DfA by empno==20 and sal==250;
+dump DfC;
+
+DfC= limit DfB 3;
+DfD= order DfC by sal desc;
+
+store DfB into '/user/pig/DfB' using PigStorage(',');
+
+{ Transform (by column) }
+DfE = foreach DfA generate id;
+dump DfE;
+{creating new column}
+DfF= foreach DfA generate *, sal*5 as Incentive;
+dump DfF;
+{transforming columns}
+DfG= foreach DfA generate SUBSTRING(ename,0,4);
+
+{ Advanced codes }
+
+DfH = foreach DfA generate $0,$1;
+I = group DfA by empno;
+J = foreach I generate group as empno, COUNT($1) as count;
+K = foreach DfA generate MAX(DfA.esal) as maxsal,MIN(DfA.esal) as minsal, SUM(DfA.esal) as sumsal, COUNT($1) as count;
+L = group DfA by (empno, epos)
+
+SPLIT DfA into DfB if edpno==10, DfC if edpno==20, D if epos=='MANAGER';
+
+{ Joins }
+
+A = load '/emp.csv' using PigStorage(',') as (eid:int,ename:chararray,epos:chararray,esal:int,edpno:int);
+B = load '/dept.csv' using PigStorage(',') as (edpno:int,epos:chararray,ecity:chararray);
+C = JOIN A by edpno,B by edpno;
+D = foreach C generate A::eid,B::epos;
+E = JOIN A by edpno RIGHT OUTER, B by edpno;
