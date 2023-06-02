@@ -1,0 +1,34 @@
+# Hive
+Hive Basic Commands
+hive
+show databases;
+create database if not exists ex1;        { where ex1 is the name given to the database }
+use ex1;
+
+{ to check location from hdfs }
+hadoop fs -ls/user/hive/warehouse
+
+{ Manage tables or internal tables }
+create table if not exist emp(empno int, ename string, sal float, dpno int) row format delimited fields terminated by ',' ;
+describe emp;
+load data local inpath '/home/jaini/Desktop/emp.csv' into table emp;
+select * from emp;
+
+{External tables }
+create external table ext_emp1(empno int, ename string, sal float,dpno int) row format delimited fields terminated by ','location '/user/jaini/data/emp';
+
+create external table ext_emp2(empno int, ename string, sal float, dpno int) row format delimited fields terminated by ',';
+load data local inpath '/home/jaini/Desktop/empdata' into table exr_emp2;
+
+{Partitioning}
+set hive.exec.dynamic.partition.mode;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+create external table emp_dept (empno int, ename string, sal float) partitioned by (dpno int) row format delimited fields determinated by ',';
+insert into table emp_dept partition(dpno) select * from emp;
+
+hadoop fs -ls/user/hive/warehouse/ex1.db
+
+{ Bucketing }
+create table dept_buckk(empno int, ename string, sal float, dpno int) clustered by (dpno) into 3 buckets row format delimited fields terminated by ',';
+set hive.enforce.bucketing = true;
